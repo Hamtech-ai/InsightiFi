@@ -67,6 +67,48 @@ def RSI(df, window = 15):
 
     return RSIdf
 
+
+# Momentum Indicator: Stochastic Oscillator (SR)
+def STOCHASTIC(df):
+
+    overBought = 80
+    overSold = 20
+
+    df['STOCH_osci'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch()
+    df['STOCH_signal'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch_signal()
+    df['last_STOCH_osci'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch().shift(1)
+    df['last_STOCH_signal'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch_signal().shift(1)
+
+    # buy signal
+    df['STOCH_buy'] = np.nan
+    df.loc[
+        (df['STOCH_osci'] < overSold) &
+        (df['last_STOCH_osci'] > overSold) &
+        (df['STOCH_signal'] < df['STOCH_osci']), 
+        'STOCH_buy'] = 1
+    # sell signal
+    df.loc[
+        (df['STOCH_osci'] < overBought) &
+        (df['last_STOCH_osci'] > overBought) &
+        (df['STOCH_signal'] > df['STOCH_osci']), 
+        'STOCH_buy'] = 0 
+
+    df['STOCH_position'] = df['STOCH_buy'].fillna(method = 'ffill')
+
+    STOCHASTICdf =  pd.DataFrame(
+    {
+        'STOCH_osci': df['STOCH_osci'],
+        'STOCH_signal': df['STOCH_signal'],
+        'last_STOCH_osci': df['last_STOCH_osci'],
+        'last_STOCH_signal': df['last_STOCH_signal'],
+        'STOCH_buy': df['STOCH_buy'],
+        'STOCH_position': df['STOCH_position']
+    }
+    )
+    
+    return STOCHASTICdf 
+       
+
 # Volatility Indicator: Bollinger Bands (BB)
 def BB(df):
 
