@@ -24,15 +24,15 @@ def SMA(df):
 
     SMAdf =  pd.DataFrame(
         {
-        'SMA10d': df['SMA10d'],
-        'SMA20d': df['SMA20d'],
-        'last_SMA20d': df['last_SMA20d'],
-        'SMA30d': df['SMA30d'],
-        'SMA50d': df['SMA50d'],
-        'last_SMA50d': df['last_SMA50d'],
-        'SMA80d': df['SMA80d'],
-        'SMA_buy': df['SMA_buy'],
-        'SMA_position': df['SMA_position']
+            'SMA10d': df['SMA10d'],
+            'SMA20d': df['SMA20d'],
+            'last_SMA20d': df['last_SMA20d'],
+            'SMA30d': df['SMA30d'],
+            'SMA50d': df['SMA50d'],
+            'last_SMA50d': df['last_SMA50d'],
+            'SMA80d': df['SMA80d'],
+            'SMA_buy': df['SMA_buy'],
+            'SMA_position': df['SMA_position']
         }
     )
 
@@ -59,11 +59,50 @@ def RSI(df, window = 15):
 
     RSIdf =  pd.DataFrame(
         {
-        'RSI': df['RSI'],
-        'RSI_buy': df['RSI_buy'],
-        'RSI_position': df['RSI_position']
+            'RSI': df['RSI'],
+            'RSI_buy': df['RSI_buy'],
+            'RSI_position': df['RSI_position']
         }
     )
 
     return RSIdf
-    
+
+# Volatility Indicator: Bollinger Bands (BB)
+def BB(df):
+
+    indicator_bb = ta.volatility.BollingerBands(df['adjClose'], window = 20, window_dev = 2)
+    df['BB_bbh'] = indicator_bb.bollinger_hband()
+    df['BB_bbl'] = indicator_bb.bollinger_lband()
+    df['lag1d_BB_bbh'] = indicator_bb.bollinger_hband().shift(1)
+    df['lag1d_BB_bbl'] = indicator_bb.bollinger_lband().shift(1)
+
+    # buy signal
+    df['BB_buy'] = np.nan
+    df.loc[
+        (df['lag1d_BB_bbl'] > df['lag1d_close']) & 
+        (df['lag1d_open'] > df['lag1d_close'])&
+        (df['BB_bbl'] > df['open']) & 
+        (df['open'] < df['close']),
+        'BB_buy' ] = 1
+    # sell signal
+    df.loc[
+        (df['lag1d_BB_bbh'] < df['lag1d_close']) & 
+        (df['lag1d_open'] < df['lag1d_close'])&
+        (df['BB_bbh'] < df['open']) & 
+        (df['open'] > df['close']),
+        'BB_buy' ] = 0
+
+    df['BB_position'] = df['BB_buy'].fillna(method = 'ffill')
+
+    BBdf =  pd.DataFrame(
+        {
+            'BB_bbh': df['BB_bbh'],
+            'BB_bbl': df['BB_bbl'],
+            'lag1d_BB_bbh': df['lag1d_BB_bbh'],
+            'lag1d_BB_bbl': df['lag1d_BB_bbl'],
+            'BB_buy': df['BB_buy'],
+            'BB_position': df['BB_position']
+        }
+    )
+
+    return BBdf
