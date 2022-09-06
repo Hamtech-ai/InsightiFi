@@ -39,6 +39,37 @@ def SMA(df):
     return SMAdf
 
 
+# Trend Indicator: Exponential Moving Average (EMA)
+def EMA(df):
+
+    df['EMA_5d'] = ta.trend.ema_indicator(df['adjClose'], 5)
+    df['last_EMA_5d'] = ta.trend.ema_indicator(df['adjClose'], 5).shift(1)
+    df['EMA_40d'] = ta.trend.ema_indicator(df['adjClose'], 40)
+    df['last_EMA_40d'] = ta.trend.ema_indicator(df['adjClose'], 40).shift(1)
+
+    # buy signal
+    df['EMA_buy'] = np.nan
+
+    df.loc[(df['last_EMA_5d'] < df['last_EMA_40d']) & (df['EMA_5d'] > df['EMA_40d']), 'EMA_buy'] = 1
+    # sell signal
+    df.loc[(df['last_EMA_5d'] > df['last_EMA_40d']) & (df['EMA_5d'] < df['EMA_40d']), 'EMA_buy'] = 0
+
+    df['EMA_position'] = df['EMA_buy'].fillna(method = 'ffill')
+
+    EMAdf =  pd.DataFrame(
+        {
+            'EMA_5d': df['EMA_5d'],
+            'last_EMA_5d': df['last_EMA_5d'],
+            'EMA_40d': df['EMA_40d'],
+            'last_EMA_40d': df['last_EMA_40d'],
+            'EMA_buy': df['EMA_buy'],
+            'EMA_position': df['EMA_position']
+        }
+    )
+
+    return EMAdf
+
+
 # Trend Indicator: Moving Average Convergence Divergence (MACD)
 def MACD(df):
 
