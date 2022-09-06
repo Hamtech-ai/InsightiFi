@@ -39,6 +39,34 @@ def SMA(df):
     return SMAdf
 
 
+# Trend Indicator: Moving Average Convergence Divergence (MACD)
+def MACD(df):
+
+    df['MACD'] = ta.trend.macd(df['adjClose'], window_slow =26,  window_fast = 12) # ta.trend.ema_indicator(df['adjClose'], 12) - ta.trend.ema_indicator(df['adjClose'], 26)
+    df['MACD_diff'] = ta.trend.macd_diff(df['adjClose'], window_slow = 26,  window_fast = 12) # df['MACD'] - df['MACD_signal']
+    df['MACD_signal'] = ta.trend.macd_signal(df['adjClose'], window_slow = 26,  window_fast = 12) # ta.trend.ema_indicator(df['MACD'], 9)
+
+    # buy signal
+    df['MACD_buy'] = np.nan
+    df.loc[(df['MACD'] < 0) & (df['MACD'] > df['MACD_signal']) & (df['MACD'].shift(1) < df['MACD_signal'].shift(1)), 'MACD_buy'] = 1
+    # sell signal
+    df.loc[(df['MACD'] > 0) & (df['MACD'] < df['MACD_signal']) & (df['MACD'].shift(1) > df['MACD_signal'].shift(1)), 'MACD_buy'] = 0
+
+    df['MACD_position'] = df['MACD_buy'].fillna(method = 'ffill')
+
+    MACDdf =  pd.DataFrame(
+    {'adjClose': df['adjClose'],
+        'MACD': df['MACD'],
+        'MACD_diff': df['MACD_diff'],
+        'MACD_signal': df['MACD_signal'],
+        'MACD_buy': df['MACD_buy'],
+        'MACD_position': df['MACD_position']
+    }
+    )
+
+    return MACDdf
+
+
 # Momentum Indicator: Relative Strength Index (RSI)
 def RSI(df, window = 15):
 
