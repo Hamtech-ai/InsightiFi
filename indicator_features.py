@@ -174,21 +174,21 @@ def BB(df):
     indicator_bb = ta.volatility.BollingerBands(df['adjClose'], window = 20, window_dev = 2)
     df['BB_bbh'] = indicator_bb.bollinger_hband()
     df['BB_bbl'] = indicator_bb.bollinger_lband()
-    df['lag1d_BB_bbh'] = indicator_bb.bollinger_hband().shift(1)
-    df['lag1d_BB_bbl'] = indicator_bb.bollinger_lband().shift(1)
+    df['last_BB_bbh'] = indicator_bb.bollinger_hband().shift(1)
+    df['last_BB_bbl'] = indicator_bb.bollinger_lband().shift(1)
 
     # buy signal
     df['BB_buy'] = np.nan
     df.loc[
-        (df['lag1d_BB_bbl'] > df['lag1d_close']) & 
-        (df['lag1d_open'] > df['lag1d_close'])&
+        (df['last_BB_bbl'] > df['last_close']) & 
+        (df['last_open'] > df['last_close'])&
         (df['BB_bbl'] > df['open']) & 
         (df['open'] < df['close']),
         'BB_buy' ] = 1
     # sell signal
     df.loc[
-        (df['lag1d_BB_bbh'] < df['lag1d_close']) & 
-        (df['lag1d_open'] < df['lag1d_close'])&
+        (df['last_BB_bbh'] < df['last_close']) & 
+        (df['last_open'] < df['last_close'])&
         (df['BB_bbh'] < df['open']) & 
         (df['open'] > df['close']),
         'BB_buy' ] = 0
@@ -199,8 +199,8 @@ def BB(df):
         {
             'BB_bbh': df['BB_bbh'],
             'BB_bbl': df['BB_bbl'],
-            'lag1d_BB_bbh': df['lag1d_BB_bbh'],
-            'lag1d_BB_bbl': df['lag1d_BB_bbl'],
+            'last_BB_bbh': df['last_BB_bbh'],
+            'last_BB_bbl': df['last_BB_bbl'],
             'BB_buy': df['BB_buy'],
             'BB_position': df['BB_position']
         }
