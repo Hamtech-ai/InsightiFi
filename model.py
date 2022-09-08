@@ -6,7 +6,7 @@ def RFClf(train_data, train_label, test_data, test_label):
     clf = RandomForestClassifier(
         n_estimators = 50,
         criterion = 'entropy',
-        class_weight='balanced_subsample',
+        class_weight = 'balanced_subsample',
           random_state = 0
     )
 
