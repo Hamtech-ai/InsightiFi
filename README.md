@@ -34,7 +34,7 @@ For more details why we didn't use other type of models ( some examples here ). 
 
 # Dataset we used 📁
 
-The following three primary reasons led us to choose this library as our dataset of the Iranian stock market:
+The following three primary reasons led us to choose this library as our ML dataset of the Iranian stock market:
 1. Data is updated daily and non-stop.
 2. Contains valuable data about individual sales and purchases.
 3. Has a history of buying stocks over long periods.
