@@ -86,7 +86,7 @@ def MACD(df):
     df['MACD_position'] = df['MACD_buy'].fillna(method = 'ffill')
 
     MACDdf =  pd.DataFrame(
-    {'adjClose': df['adjClose'],
+    {
         'MACD': df['MACD'],
         'MACD_diff': df['MACD_diff'],
         'MACD_signal': df['MACD_signal'],
