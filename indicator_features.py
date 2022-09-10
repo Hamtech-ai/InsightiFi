@@ -20,7 +20,7 @@ def SMA(df):
     # sell signal
     df.loc[(df['last_SMA20d'] > df['last_SMA50d']) & (df['SMA20d'] < df['SMA50d']), 'SMA_buy'] = 0
 
-    df['SMA_position'] = df['SMA_buy'].fillna(method = 'ffill')
+    df['SMA_position'] = df['SMA_buy'].fillna(method = 'ffill').shift()
 
     SMAdf =  pd.DataFrame(
         {
@@ -54,7 +54,7 @@ def EMA(df):
     # sell signal
     df.loc[(df['last_EMA_5d'] > df['last_EMA_40d']) & (df['EMA_5d'] < df['EMA_40d']), 'EMA_buy'] = 0
 
-    df['EMA_position'] = df['EMA_buy'].fillna(method = 'ffill')
+    df['EMA_position'] = df['EMA_buy'].fillna(method = 'ffill').shift()
 
     EMAdf =  pd.DataFrame(
         {
@@ -83,7 +83,7 @@ def MACD(df):
     # sell signal
     df.loc[(df['MACD'] > 0) & (df['MACD'] < df['MACD_signal']) & (df['MACD'].shift(1) > df['MACD_signal'].shift(1)), 'MACD_buy'] = 0
 
-    df['MACD_position'] = df['MACD_buy'].fillna(method = 'ffill')
+    df['MACD_position'] = df['MACD_buy'].fillna(method = 'ffill').shift()
 
     MACDdf =  pd.DataFrame(
     {
@@ -113,7 +113,7 @@ def RSI(df, window = 15):
     # sell signal
     df.loc[(df['last_RSI'] > overBought) & (df['RSI'] < overBought), 'RSI_buy'] = 0 
 
-    df['RSI_position'] = df['RSI_buy'].fillna(method = 'ffill')
+    df['RSI_position'] = df['RSI_buy'].fillna(method = 'ffill').shift()
 
 
     RSIdf =  pd.DataFrame(
@@ -133,33 +133,33 @@ def STOCHASTIC(df):
     overBought = 80
     overSold = 20
 
-    df['STOCH_osci'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch()
-    df['STOCH_signal'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch_signal()
-    df['last_STOCH_osci'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch().shift(1)
-    df['last_STOCH_signal'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch_signal().shift(1)
+    df['STOCH_fast'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch()
+    df['STOCH_slow'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch_signal()
+    df['last_STOCH_fast'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch().shift(1)
+    df['last_STOCH_slow'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch_signal().shift(1)
 
     # buy signal
     df['STOCH_buy'] = np.nan
     df.loc[
-        (df['STOCH_osci'] < overSold) &
-        (df['last_STOCH_osci'] > overSold) &
-        (df['STOCH_signal'] < df['STOCH_osci']), 
+        (df['STOCH_fast'] < overSold) &
+        (df['last_STOCH_fast'] > overSold) &
+        (df['STOCH_slow'] < df['STOCH_fast']), 
         'STOCH_buy'] = 1
     # sell signal
     df.loc[
-        (df['STOCH_osci'] < overBought) &
-        (df['last_STOCH_osci'] > overBought) &
-        (df['STOCH_signal'] > df['STOCH_osci']), 
+        (df['STOCH_fast'] < overBought) &
+        (df['last_STOCH_fast'] > overBought) &
+        (df['STOCH_slow'] > df['STOCH_fast']), 
         'STOCH_buy'] = 0 
 
-    df['STOCH_position'] = df['STOCH_buy'].fillna(method = 'ffill')
+    df['STOCH_position'] = df['STOCH_buy'].fillna(method = 'ffill').shift()
 
     STOCHASTICdf =  pd.DataFrame(
     {
-        'STOCH_osci': df['STOCH_osci'],
-        'STOCH_signal': df['STOCH_signal'],
-        'last_STOCH_osci': df['last_STOCH_osci'],
-        'last_STOCH_signal': df['last_STOCH_signal'],
+        'STOCH_fast': df['STOCH_fast'],
+        'STOCH_slow': df['STOCH_slow'],
+        'last_STOCH_fast': df['last_STOCH_fast'],
+        'last_STOCH_slow': df['last_STOCH_slow'],
         'STOCH_buy': df['STOCH_buy'],
         'STOCH_position': df['STOCH_position']
     }
@@ -193,7 +193,7 @@ def BB(df):
         (df['open'] > df['close']),
         'BB_buy' ] = 0
 
-    df['BB_position'] = df['BB_buy'].fillna(method = 'ffill')
+    df['BB_position'] = df['BB_buy'].fillna(method = 'ffill').shift()
 
     BBdf =  pd.DataFrame(
         {
