@@ -130,7 +130,7 @@ def RSI(df, window = 15):
 # Momentum Indicator: Stochastic Oscillator (SR)
 def STOCHASTIC(df):
 
-    overBought = 80
+    overBought = 70
     overSold = 20
 
     df['STOCH_fast'] = ta.momentum.StochasticOscillator(df['high'], df['low'], df['close'], 15, 5).stoch()
@@ -141,14 +141,14 @@ def STOCHASTIC(df):
     # buy signal
     df['STOCH_buy'] = np.nan
     df.loc[
-        (df['STOCH_fast'] < overSold) &
-        (df['last_STOCH_fast'] > overSold) &
+        (df['STOCH_fast'] > overSold) &
+        (df['last_STOCH_fast'] < df['last_STOCH_slow']) &
         (df['STOCH_slow'] < df['STOCH_fast']), 
         'STOCH_buy'] = 1
     # sell signal
     df.loc[
-        (df['STOCH_fast'] < overBought) &
-        (df['last_STOCH_fast'] > overBought) &
+        (df['STOCH_fast'] > overBought) &
+        (df['last_STOCH_fast'] > df['last_STOCH_slow']) &
         (df['STOCH_slow'] > df['STOCH_fast']), 
         'STOCH_buy'] = 0 
 
