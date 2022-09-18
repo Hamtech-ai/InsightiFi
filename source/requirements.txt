@@ -1,0 +1,10 @@
+jdatetime==3.6.2
+matplotlib==3.3.2
+numpy==1.19.2
+orderedset==2.0.3
+pandas==1.1.2
+requests==2.24.0
+scipy==1.5.2
+sklearn==0.0
+swifter==1.0.7
+ta==0.5.25
