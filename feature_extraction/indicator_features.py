@@ -1,10 +1,12 @@
+import copy
 import numpy as np
 import pandas as pd
 import ta
-#import copy
 
-# Trend Indicator: Simple Moving Average (SMA)
-def SMA(df):
+## Trend Indicator: Simple Moving Average (SMA) ##
+##################################################
+def SMA(stock):
+    df = copy.copy(stock)
 
     df['SMA10d'] = ta.trend.SMAIndicator(df['adjClose'], window = 10).sma_indicator()
     df['SMA20d'] = ta.trend.SMAIndicator(df['adjClose'], window = 20).sma_indicator()
@@ -22,7 +24,7 @@ def SMA(df):
 
     df['SMA_position'] = df['SMA_buy'].fillna(method = 'ffill').shift()
 
-    SMAdf =  pd.DataFrame(
+    return_df =  pd.DataFrame(
         {
             'SMA10d': df['SMA10d'],
             'SMA20d': df['SMA20d'],
@@ -36,11 +38,13 @@ def SMA(df):
         }
     )
 
-    return SMAdf
+    return return_df
 
 
 # Trend Indicator: Exponential Moving Average (EMA)
-def EMA(df):
+def EMA(stock):
+
+    df = stock
 
     df['EMA_5d'] = ta.trend.ema_indicator(df['adjClose'], 5)
     df['last_EMA_5d'] = ta.trend.ema_indicator(df['adjClose'], 5).shift(1)
@@ -71,7 +75,9 @@ def EMA(df):
 
 
 # Trend Indicator: Moving Average Convergence Divergence (MACD)
-def MACD(df):
+def MACD(stock):
+
+    df = stock
 
     df['MACD'] = ta.trend.macd(df['adjClose'], window_slow =26,  window_fast = 12) # ta.trend.ema_indicator(df['adjClose'], 12) - ta.trend.ema_indicator(df['adjClose'], 26)
     df['MACD_diff'] = ta.trend.macd_diff(df['adjClose'], window_slow = 26,  window_fast = 12) # df['MACD'] - df['MACD_signal']
@@ -99,7 +105,9 @@ def MACD(df):
 
 
 # Momentum Indicator: Relative Strength Index (RSI)
-def RSI(df, window = 15):
+def RSI(stock, window = 15):
+
+    df = stock
 
     overBought = 70
     overSold = 30
@@ -128,7 +136,9 @@ def RSI(df, window = 15):
 
 
 # Momentum Indicator: Stochastic Oscillator (SR)
-def STOCHASTIC(df):
+def STOCHASTIC(stock):
+
+    df = stock
 
     overBought = 70
     overSold = 20
@@ -169,7 +179,8 @@ def STOCHASTIC(df):
        
 
 # Volatility Indicator: Bollinger Bands (BB)
-def BB(df):
+def BB(stock):
+    df = stock
 
     indicator_bb = ta.volatility.BollingerBands(df['adjClose'], window = 20, window_dev = 2)
     df['BB_bbh'] = indicator_bb.bollinger_hband()
