@@ -33,7 +33,7 @@ def BB(stock):
 
     df['BB_position'] = df['BB_buy'].fillna(method = 'ffill').shift()
 
-    BBdf =  pd.DataFrame(
+    BB_df =  pd.DataFrame(
         {
             'BB_bbh': df['BB_bbh'],
             'BB_bbl': df['BB_bbl'],
@@ -44,7 +44,7 @@ def BB(stock):
         }
     )
 
-    return BBdf
+    return BB_df
 
 ## Trend Indicator: Exponential Moving Average (EMA) ##
 #######################################################
@@ -65,7 +65,7 @@ def EMA(stock):
 
     df['EMA_position'] = df['EMA_buy'].fillna(method = 'ffill').shift()
 
-    EMAdf =  pd.DataFrame(
+    EMA_df =  pd.DataFrame(
         {
             'EMA_5d': df['EMA_5d'],
             'last_EMA_5d': df['last_EMA_5d'],
@@ -76,7 +76,7 @@ def EMA(stock):
         }
     )
 
-    return EMAdf
+    return EMA_df
 
 ## Trend Indicator: Moving Average Convergence Divergence (MACD) ##
 ###################################################################
@@ -95,7 +95,7 @@ def MACD(stock):
 
     df['MACD_position'] = df['MACD_buy'].fillna(method = 'ffill').shift()
 
-    MACDdf =  pd.DataFrame(
+    MACD_df =  pd.DataFrame(
     {
         'MACD': df['MACD'],
         'MACD_diff': df['MACD_diff'],
@@ -105,7 +105,7 @@ def MACD(stock):
     }
     )
 
-    return MACDdf
+    return MACD_df
 
 ## Momentum Indicator: Relative Strength Index (RSI) ##
 #######################################################
@@ -127,7 +127,7 @@ def RSI(stock, window = 15):
     df['RSI_position'] = df['RSI_buy'].fillna(method = 'ffill').shift()
 
 
-    RSIdf =  pd.DataFrame(
+    RSI_df =  pd.DataFrame(
         {
             'RSI': df['RSI'],
             'RSI_buy': df['RSI_buy'],
@@ -135,7 +135,7 @@ def RSI(stock, window = 15):
         }
     )
 
-    return RSIdf
+    return RSI_df
 
 ## Trend Indicator: Simple Moving Average (SMA) ##
 ##################################################
@@ -203,7 +203,7 @@ def STOCHASTIC(stock):
 
     df['STOCH_position'] = df['STOCH_buy'].fillna(method = 'ffill').shift()
 
-    STOCHASTICdf =  pd.DataFrame(
+    STOCHASTIC_df =  pd.DataFrame(
     {
         'STOCH_fast': df['STOCH_fast'],
         'STOCH_slow': df['STOCH_slow'],
@@ -214,4 +214,4 @@ def STOCHASTIC(stock):
     }
     )
     
-    return STOCHASTICdf
+    return STOCHASTIC_df
