@@ -80,63 +80,74 @@ def calender_features(stock):
 #     )
 
 #     return return_df
-    
-    
-def ret_based(stock):
-    df = stock.copy()
-    return_df = pd.DataFrame(
-        {
-            'ret1d_log':(np.log(df.adjClose) - np.log(df.yesterday)),
-            'ret3d_log':(np.log(df.adjClose) - np.log(df.yesterday)).rolling(3).sum(),
-            'ret7d_log':(np.log(df.adjClose) - np.log(df.yesterday)).rolling(7).sum(),
-            'ret14d_log':(np.log(df.adjClose) - np.log(df.yesterday)).rolling(14).sum(),
-            'ret30d_log':(np.log(df.adjClose) - np.log(df.yesterday)).rolling(30).sum(),
-            'ret60d_log':(np.log(df.adjClose) - np.log(df.yesterday)).rolling(60).sum(),
-            'lastclose_log':(np.log(df['adjClose']) - np.log(df['close'])),
-            'buy_queue_locked' : np.logical_and(np.isclose(df['high'], df['low']), df['high'] > df['yesterday']),
-            'sell_queue_locked' : np.logical_and(np.isclose(df['high'], df['low']), df['low'] < df['yesterday'])
-        }
-)
-    return return_df
 
-def prp_based_func(stock):
+## proportion price in different time frames ##
+###############################################
+def prp_based(stock):
     df = stock.copy()
 
     return_df = pd.DataFrame(
         {
-            'prp_high30d':df['adjClose']/df['high'].rolling(30).max(),
-            'prp_high60d':df['adjClose']/df['high'].rolling(60).max(),
-            'prp_high90d':df['adjClose']/df['high'].rolling(90).max(),
-            'prp_low30d':df['adjClose']/df['low'].rolling(30).min(),
-            'prp_low60d':df['adjClose']/df['low'].rolling(60).min(),
-            'prp_low90d':df['adjClose']/df['low'].rolling(90).min(),
-            'prp_value3d30d':df['value'].rolling(3).mean()/df['value'].rolling(30).mean(),
-            'prp_value5d60d':df['value'].rolling(5).mean()/df['value'].rolling(60).mean(),
+            'prp_high30d': df['adjClose']/df['high'].rolling(30).max(),
+            'prp_high60d': df['adjClose']/df['high'].rolling(60).max(),
+            'prp_high90d': df['adjClose']/df['high'].rolling(90).max(),
+            'prp_low30d': df['adjClose']/df['low'].rolling(30).min(),
+            'prp_low60d': df['adjClose']/df['low'].rolling(60).min(),
+            'prp_low90d': df['adjClose']/df['low'].rolling(90).min(),
+            'prp_value3d30d': df['value'].rolling(3).mean()/df['value'].rolling(30).mean(),
+            'prp_value5d60d': df['value'].rolling(5).mean()/df['value'].rolling(60).mean(),
         }
     )
     
     return return_df
 
-def wght_based_feature(foladHist):
-    print('weight based features')
+## logarithmic returns features ##
+##################################
+def ret_based(stock):
+    df = stock.copy()
+
+    return_df = pd.DataFrame(
+        {
+            'ret1d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])),
+            'ret3d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])).rolling(3).sum(),
+            'ret7d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])).rolling(7).sum(),
+            'ret14d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])).rolling(14).sum(),
+            'ret30d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])).rolling(30).sum(),
+            'ret60d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])).rolling(60).sum(),
+            'lastclose_log':(np.log(df['adjClose']) - np.log(df['close'])),
+            'buy_queue_locked' : np.logical_and(
+                np.isclose(df['high'], df['low']), df['high'] > df['yesterday']),
+            'sell_queue_locked' : np.logical_and(
+                np.isclose(df['high'], df['low']), df['low'] < df['yesterday'])
+        }
+)
+    return return_df
+
+## proportion of trading values ##
+##################################
+def wght_based(stock):
+    df = stock.copy()
     
-    def value20d_based_func(foladHist):
-        return_df = pd.DataFrame({\
-            'value_20d':foladHist['value'].rolling(20).mean(), \
-            })
+    def value20d_based(stock):
+        return_df = pd.DataFrame(
+            {
+                'value_20d': stock['value'].rolling(20).mean(), 
+            }
+        )
         return return_df
     
-    df_value20_data = pd.concat([foladHist[['date','value']], value20d_based_func(foladHist)], axis=1)
+    df_value20_data = pd.concat([stock[['date','value']], value20d_based(stock)], axis=1)
     
-    def wght_based_func(stock_date_group):
-        return_df = pd.DataFrame({\
-            'value_weight':foladHist['value']/foladHist['value'].sum(), \
-            'value_weight20d':foladHist['value_20d']/foladHist['value_20d'].sum(), \
-            })
+    def wght_based(stock_date_group):
+        return_df = pd.DataFrame(
+            {
+                'value_weight': stock['value']/stock['value'].sum(),
+                'value_weight20d': stock['value_20d']/stock['value_20d'].sum()
+            }
+        )
         return return_df
 
-    df_wght_based = value20d_based_func(foladHist)
-
-
+    df_wght_based = value20d_based(stock)
     df_feature = pd.concat([df_value20_data, df_wght_based], axis=1)
+
     return df_feature
