@@ -5,9 +5,10 @@ def RFClf(train_data, train_label, test_data, test_label):
 
     clf = RandomForestClassifier(
         n_estimators = 50,
+        max_depth = 4,
         criterion = 'entropy',
         class_weight = 'balanced_subsample',
-          random_state = 0
+        random_state = 0
     )
 
     clf.fit(train_data, train_label)
