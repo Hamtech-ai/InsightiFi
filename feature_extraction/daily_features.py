@@ -6,6 +6,7 @@ import numpy as np
 import datetime as datetime
 
 
+
 # ## candlestick feature ##
 # #########################
 def candlestick_feature(df):
@@ -118,3 +119,60 @@ def weight_feature(df):
 
     df_feature = pd.concat([df_value_based, df_weight_based], axis=1)
     return df_feature
+
+
+
+
+## proportion price in different time frames ##
+###############################################
+def proportion_feature(df):
+    df_feature = pd.DataFrame(
+        {
+            'prp_high30d': df['adjClose']/df['high'].rolling(30).max(),
+            'prp_high60d': df['adjClose']/df['high'].rolling(60).max(),
+            'prp_high90d': df['adjClose']/df['high'].rolling(90).max(),
+            'prp_low30d': df['adjClose']/df['low'].rolling(30).min(),
+            'prp_low60d': df['adjClose']/df['low'].rolling(60).min(),
+            'prp_low90d': df['adjClose']/df['low'].rolling(90).min(),
+            'prp_value3d30d': df['value'].rolling(3).mean()/df['value'].rolling(30).mean(),
+            'prp_value5d60d': df['value'].rolling(5).mean()/df['value'].rolling(60).mean(),
+        }
+    )
+    return df_feature
+
+
+
+
+## logarithmic returns features ##
+##################################
+def logarithmic_feature(df):
+    df_feature = pd.DataFrame(
+        {
+            'ret1d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])),
+            'ret3d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])).rolling(3).sum(),
+            'ret7d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])).rolling(7).sum(),
+            'ret14d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])).rolling(14).sum(),
+            'ret30d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])).rolling(30).sum(),
+            'ret60d_log':(np.log(df['adjClose']) - np.log(df['yesterday'])).rolling(60).sum(),
+            'lastclose_log':(np.log(df['adjClose']) - np.log(df['close'])),
+            'buy_queue_locked' : np.logical_and(np.isclose(df['high'], df['low']), df['high'] > df['yesterday']),
+            'sell_queue_locked' : np.logical_and(np.isclose(df['high'], df['low']), df['low'] < df['yesterday'])
+        }
+    )
+    return df_feature
+
+
+
+
+## shift data for 1 day ##
+##########################
+def shift_data(df):
+    df_feature = pd.concat(
+        [
+            df.shift(1).drop(columns = 'date').add_prefix('last1d_')
+        ], axis = 1  
+    )
+    return df_feature
+
+
+
