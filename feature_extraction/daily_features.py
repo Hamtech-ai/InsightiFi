@@ -101,6 +101,38 @@ def candlestick_feature(stock):
     df_feature = pd.concat([df_shadow_based, df_candle_based], axis=1)
     return df_feature
 
+## individual and non-individual in different time frames ##
+############################################################
+def indv_nonindv_features(stockClient):
+    df = stockClient.copy()
+
+    df['enter_individual_money'] = df['individual_buy_value'] - df['individual_sell_value']
+    df['individual_buy_per_capita'] = df['individual_buy_value'] / df['individual_buy_count']
+    df['individual_sell_per_capita'] = df['individual_sell_value'] / df['individual_sell_count']
+    df['individual_power'] = df['individual_buy_per_capita'] / df['individual_sell_per_capita']
+    df['individual_power_3d'] = df['individual_power'] / df['individual_power'].rolling(3).mean()
+    df['individual_power_5d'] = df['individual_power'] / df['individual_power'].rolling(5).mean()
+    df['individual_power_10d'] = df['individual_power'] / df['individual_power'].rolling(10).mean()
+    df['individual_power_20d'] = df['individual_power'] / df['individual_power'].rolling(20).mean()
+    df['individual_power_prp_5d20'] = df['individual_power'].rolling(5).mean() / df['individual_power'].rolling(20).mean()
+
+    return_df =  pd.DataFrame(
+        {
+            'date': df['date'],
+            'enter_individual_money': df['enter_individual_money'],
+            'individual_buy_per_capita': df['individual_buy_per_capita'],
+            'individual_sell_per_capita': df['individual_sell_per_capita'],
+            'individual_power': df['individual_power'],
+            'individual_power_3d': df['individual_power_3d'],
+            'individual_power_5d': df['individual_power_5d'],
+            'individual_power_10d': df['individual_power_10d'],
+            'individual_power_20d': df['individual_power_20d'],
+            'individual_power_prp_5d20': df['individual_power_prp_5d20']
+        }
+    )
+
+    return return_df
+
 ## proportion price in different time frames ##
 ###############################################
 def prp_based(stock):
