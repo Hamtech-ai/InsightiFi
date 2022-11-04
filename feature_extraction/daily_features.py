@@ -182,7 +182,7 @@ def shift_data(stock):
 
     df = pd.concat(
         [
-            df.shift(1).drop(columns = 'date').add_prefix('last1d_')
+            df.shift(1).drop(columns = ['date', 'jdate']).add_prefix('last1d_')
         ], axis = 1  
     )
 
