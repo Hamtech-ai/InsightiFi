@@ -4,10 +4,13 @@ from sklearn.ensemble import RandomForestClassifier
 def RFClf(train_data, train_label, test_data, test_label):
 
     clf = RandomForestClassifier(
-        n_estimators = 50,
+        n_estimators = 135,
         max_depth = 4,
+        min_samples_leaf = 1,
+        min_samples_split = 2,
         criterion = 'entropy',
         class_weight = 'balanced_subsample',
+        n_jobs = -1,
         random_state = 0
     )
 
