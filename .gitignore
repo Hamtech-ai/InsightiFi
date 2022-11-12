@@ -1,0 +1,14 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+
+source/
+__pycache__/
+# financial_index_data/
+# tickers_data/
