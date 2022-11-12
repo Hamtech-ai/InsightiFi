@@ -1,0 +1,1115 @@
+{   
+    "label_info":{
+        "Buy":{
+            "label_map":[0,0,0,1],
+            "alpha_recal":[0,0.3],
+            "label_weight":[0,1]
+        },
+        "Sell":{
+            "label_map":[1,0,0,0],
+            "alpha_recal":[0,0.5],
+            "label_weight":[0,1]
+        },
+        "Sign":{
+            "label_map":[0,0,1,1],
+            "alpha_recal":[0.7,0.7],
+            "label_weight":[0.5,0.5]
+        }
+    },
+    "feature_info":{
+        "All":[
+            "max_price", "min_price", "close_price", "last_price", "first_price", "yesterday_price",
+            "value", "volume", "count",
+            "Individual_buy_count", "NonIndividual_buy_count", "Individual_sell_count", "NonIndividual_sell_count",
+            "Individual_buy_volume", "NonIndividual_buy_volume", "Individual_sell_volume", "NonIndividual_sell_volume",
+            "Individual_buy_value", "NonIndividual_buy_value", "Individual_sell_value", "NonIndividual_sell_value",
+            "adj_max_price", "adj_min_price", "adj_first_price", "adj_last_price", "adj_volume", "adj_close_price",
+            "jweekday",
+            "value_weight", "value_weight20d",
+            "ret1d_log", "ret3d_log", "ret7d_log", "ret14d_log", "ret30d_log", "ret60d_log", "ret90d_log", "ret120d_log", "ret300d_log", 
+            "lastclose_log", 
+            "buy_queue_locked","sell_queue_locked",
+            "prp_high30d", "prp_high60d", "prp_high90d", "prp_high120d", "prp_high300d",
+            "prp_low30d", "prp_low60d", "prp_low90d", "prp_low120d", "prp_low300d",
+            "prp_value3d30d", "prp_value5d60d", "prp_value15d120d", "prp_value30d200d",
+            "indv_buy_pcap", "indv_sell_pcap", 
+            "indv_net_count_prp7d30", "indv_net_count_prp7d120", 
+            "indv_net_value",
+            "indv_relnet_value_d14", "indv_relnet_value_d30", "indv_relnet_value_d90", "indv_relnet_value_d120",
+            "nonindv_buy_pcap", "nonindv_sell_pcap",
+            "nonindv_net_count_prp7d30", "nonindv_net_count_prp7d120", 
+            "nonindv_net_value",
+            "nonindv_relnet_value_d14", "nonindv_relnet_value_d30", "nonindv_relnet_value_d90", "nonindv_relnet_value_d120",
+            "indv_buy_ratio", "nonindv_sell_ratio",
+            "mrkt_indv_buy_pcap", "mrkt_indv_sell_pcap", "mrkt_indv_net_value", "mrkt_indv_absnet_value",
+            "mrkt_nonindv_buy_pcap", "mrkt_nonindv_sell_pcap", "mrkt_nonindv_net_value", "mrkt_nonindv_absnet_value",
+            "mrkt_prp_high30d", "mrkt_prp_high60d", "mrkt_prp_high90d", "mrkt_prp_high120d", "mrkt_prp_high300d",
+            "mrkt_prp_low30d", "mrkt_prp_low60d", "mrkt_prp_low90d", "mrkt_prp_low120d", "mrkt_prp_low300d",
+            "indv_power", "nonindv_power", "indv_power3d", "nonindv_power3d", "indv_power7d", "nonindv_power7d", 
+            "indv_power14d", "nonindv_power14d", "indv_power30d", "nonindv_power30d",
+            "indv_buy_pcap_prpd7d30", "indv_buy_pcap_prpd14d60", "indv_buy_pcap_prpd30d120", "indv_sell_pcap_prpd7d30",
+            "indv_sell_pcap_prpd14d60", "indv_sell_pcap_prpd30d120", 
+            "nonindv_buy_pcap_prpd7d30", "nonindv_buy_pcap_prpd14d60", "nonindv_buy_pcap_prpd30d120",
+            "nonindv_sell_pcap_prpd7d30", "nonindv_sell_pcap_prpd14d60", "nonindv_sell_pcap_prpd30d120",
+            "indv_buy_pcap_prp_mrkt", "indv_sell_pcap_prp_mrkt", "nonindv_buy_pcap_prp_mrkt", "nonindv_sell_pcap_prp_mrkt",
+            "indv_net_dev_mrkt", "nonindv_net_dev_mrkt", "indv_net_dev_mrkt3d", "nonindv_net_dev_mrkt3d",
+            "prp_high30d_dev_mrkt", "prp_high60d_dev_mrkt", "prp_high90d_dev_mrkt",
+            "prp_high120d_dev_mrkt", "prp_high300d_dev_mrkt", "prp_low30d_dev_mrkt",
+            "prp_low60d_dev_mrkt", "prp_low90d_dev_mrkt", "prp_low120d_dev_mrkt", "prp_low300d_dev_mrkt",
+            "base_line_difference", "chikou_span_sell", "chikou_span_buy", 
+            "cci", "cci_buy_signal", "cci_sell_signal", 
+            "rvi", "rvi_buy_signal", "rvi_sell_signal", 
+            "roc", "roc_buy_signal", "roc_sell_signal", 
+            "mfi", "mfi_buy_signal", "mfi_sel_signal", 
+            "cci_light", "cci_light_buy_signal", 
+            "ema_buy", "ema_sell", 
+            "aroon_buy", "aroon_sell", 
+            "rsi", "rsi_buy", "rsi_sell", 
+            "uo", "uo_buy", "uo_sell", 
+            "stoch_osci", "stoch_buy", "stoch_sell", 
+            "obv_buy", "obv_sell", 
+            "macd", "macd_signalline", "macd_buy", "macd_sell", 
+            "ema_light", "ema_light_buy_signal", 
+            "indret_log", "indret_2d_log", "indret_3d_log", "indret_7d_log", "indret_14d_log", "indret_21d_log", "indret_30d_log", 
+            "indret_60d_log", "indret_90d_log",  "indret_120d_log",  "indret_300d_log", 
+            "ret_wrt_ind_log", "ret_wrt_ind_2d_log", "ret_wrt_ind_3d_log", "ret_wrt_ind_7d_log", 
+            "ret_wrt_ind_14d_log", "ret_wrt_ind_21d_log", "ret_wrt_ind_30d_log", "ret_wrt_ind_60d_log", 
+            "ret_wrt_ind_90d_log", "ret_wrt_ind_120d_log", "ret_wrt_ind_300d_log", 
+            "ret_wrt_grp_ind_1d_log", "ret_wrt_grp_ind_3d_log","ret_wrt_grp_ind_7d_log", "ret_wrt_grp_ind_14d_log", 
+            "ret_wrt_grp_ind_30d_log", "ret_wrt_grp_ind_60d_log", "ret_wrt_grp_ind_90d_log", "ret_wrt_grp_ind_120d_log","ret_wrt_grp_ind_300d_log", 
+            "ret_wrt_dlr_ind_1d_log", "ret_wrt_dlr_ind_3d_log", "ret_wrt_dlr_ind_7d_log", "ret_wrt_dlr_ind_14d_log",
+            "ret_wrt_dlr_ind_30d_log", "ret_wrt_dlr_ind_60d_log", "ret_wrt_dlr_ind_90d_log",
+            "ret_wrt_dlr_ind_120d_log", "ret_wrt_dlr_ind_300d_log"
+        ],
+        "PotentialFeatures":[
+            "value_weight", "value_weight20d",
+            "ret1d_log", "ret3d_log", "ret7d_log", "ret14d_log", "ret30d_log", "ret60d_log", "ret90d_log", "ret120d_log", "ret300d_log", 
+            "lastclose_log", 
+            "buy_queue_locked","sell_queue_locked",
+            "prp_high30d", "prp_high60d", "prp_high90d", "prp_high120d", "prp_high300d",
+            "prp_low30d", "prp_low60d", "prp_low90d", "prp_low120d", "prp_low300d",
+            "prp_value3d30d", "prp_value5d60d", "prp_value15d120d", "prp_value30d200d",
+            "indv_buy_pcap", "indv_sell_pcap", 
+            "indv_net_count_prp7d30", "indv_net_count_prp7d120", 
+            "indv_net_value",
+            "indv_relnet_value_d14", "indv_relnet_value_d30", "indv_relnet_value_d90", "indv_relnet_value_d120",
+            "nonindv_buy_pcap", "nonindv_sell_pcap",
+            "nonindv_net_count_prp7d30", "nonindv_net_count_prp7d120", 
+            "nonindv_net_value",
+            "nonindv_relnet_value_d14", "nonindv_relnet_value_d30", "nonindv_relnet_value_d90", "nonindv_relnet_value_d120",
+            "indv_buy_ratio", "nonindv_sell_ratio",
+            "mrkt_indv_buy_pcap", "mrkt_indv_sell_pcap", "mrkt_indv_net_value", "mrkt_indv_absnet_value",
+            "mrkt_nonindv_buy_pcap", "mrkt_nonindv_sell_pcap", "mrkt_nonindv_net_value", "mrkt_nonindv_absnet_value",
+            "mrkt_prp_high30d", "mrkt_prp_high60d", "mrkt_prp_high90d", "mrkt_prp_high120d", "mrkt_prp_high300d",
+            "mrkt_prp_low30d", "mrkt_prp_low60d", "mrkt_prp_low90d", "mrkt_prp_low120d", "mrkt_prp_low300d",
+            "indv_power", "nonindv_power", "indv_power3d", "nonindv_power3d", "indv_power7d", "nonindv_power7d", 
+            "indv_power14d", "nonindv_power14d", "indv_power30d", "nonindv_power30d",
+            "indv_buy_pcap_prpd7d30", "indv_buy_pcap_prpd14d60", "indv_buy_pcap_prpd30d120", "indv_sell_pcap_prpd7d30",
+            "indv_sell_pcap_prpd14d60", "indv_sell_pcap_prpd30d120", 
+            "nonindv_buy_pcap_prpd7d30", "nonindv_buy_pcap_prpd14d60", "nonindv_buy_pcap_prpd30d120",
+            "nonindv_sell_pcap_prpd7d30", "nonindv_sell_pcap_prpd14d60", "nonindv_sell_pcap_prpd30d120",
+            "indv_buy_pcap_prp_mrkt", "indv_sell_pcap_prp_mrkt", "nonindv_buy_pcap_prp_mrkt", "nonindv_sell_pcap_prp_mrkt",
+            "indv_net_dev_mrkt", "nonindv_net_dev_mrkt", "indv_net_dev_mrkt3d", "nonindv_net_dev_mrkt3d",
+            "prp_high30d_dev_mrkt", "prp_high60d_dev_mrkt", "prp_high90d_dev_mrkt",
+            "prp_high120d_dev_mrkt", "prp_high300d_dev_mrkt", "prp_low30d_dev_mrkt",
+            "prp_low60d_dev_mrkt", "prp_low90d_dev_mrkt", "prp_low120d_dev_mrkt", "prp_low300d_dev_mrkt",
+            "base_line_difference", "chikou_span_sell", "chikou_span_buy", 
+            "cci", "cci_buy_signal", "cci_sell_signal", 
+            "rvi", "rvi_buy_signal", "rvi_sell_signal", 
+            "roc", "roc_buy_signal", "roc_sell_signal", 
+            "mfi", "mfi_buy_signal", "mfi_sel_signal", 
+            "cci_light", "cci_light_buy_signal", 
+            "ema_buy", "ema_sell", 
+            "aroon_buy", "aroon_sell", 
+            "rsi", "rsi_buy", "rsi_sell", 
+            "uo", "uo_buy", "uo_sell", 
+            "stoch_osci", "stoch_buy", "stoch_sell", 
+            "obv_buy", "obv_sell", 
+            "macd", "macd_signalline", "macd_buy", "macd_sell", 
+            "ema_light", "ema_light_buy_signal", 
+            "indret_log", "indret_2d_log", "indret_3d_log", "indret_7d_log", "indret_14d_log", "indret_21d_log", "indret_30d_log", 
+            "indret_60d_log", "indret_90d_log",  "indret_120d_log",  "indret_300d_log", 
+            "ret_wrt_ind_log", "ret_wrt_ind_2d_log", "ret_wrt_ind_3d_log", "ret_wrt_ind_7d_log", 
+            "ret_wrt_ind_14d_log", "ret_wrt_ind_21d_log", "ret_wrt_ind_30d_log", "ret_wrt_ind_60d_log", 
+            "ret_wrt_ind_90d_log", "ret_wrt_ind_120d_log", "ret_wrt_ind_300d_log", 
+            "ret_wrt_grp_ind_1d_log", "ret_wrt_grp_ind_3d_log","ret_wrt_grp_ind_7d_log", "ret_wrt_grp_ind_14d_log", 
+            "ret_wrt_grp_ind_30d_log", "ret_wrt_grp_ind_60d_log", "ret_wrt_grp_ind_90d_log", "ret_wrt_grp_ind_120d_log","ret_wrt_grp_ind_300d_log", 
+            "ret_wrt_dlr_ind_1d_log", "ret_wrt_dlr_ind_3d_log", "ret_wrt_dlr_ind_7d_log", "ret_wrt_dlr_ind_14d_log",
+            "ret_wrt_dlr_ind_30d_log", "ret_wrt_dlr_ind_60d_log", "ret_wrt_dlr_ind_90d_log",
+            "ret_wrt_dlr_ind_120d_log", "ret_wrt_dlr_ind_300d_log"
+        ],
+        "ValueBased":[
+            "value_weight", "value_weight20d",
+            "prp_value3d30d", "prp_value5d60d", "prp_value15d120d", "prp_value30d200d",
+            "indv_buy_pcap", "indv_sell_pcap", 
+            "indv_net_count_prp7d30", "indv_net_count_prp7d120", 
+            "indv_net_value",
+            "indv_relnet_value_d14", "indv_relnet_value_d30", "indv_relnet_value_d90", "indv_relnet_value_d120",
+            "nonindv_buy_pcap", "nonindv_sell_pcap",
+            "nonindv_net_count_prp7d30", "nonindv_net_count_prp7d120", 
+            "nonindv_net_value",
+            "nonindv_relnet_value_d14", "nonindv_relnet_value_d30", "nonindv_relnet_value_d90", "nonindv_relnet_value_d120",
+            "indv_buy_ratio", "nonindv_sell_ratio",
+            "mrkt_indv_buy_pcap", "mrkt_indv_sell_pcap", "mrkt_indv_net_value", "mrkt_indv_absnet_value",
+            "mrkt_nonindv_buy_pcap", "mrkt_nonindv_sell_pcap", "mrkt_nonindv_net_value", "mrkt_nonindv_absnet_value",
+            "indv_power", "nonindv_power", "indv_power3d", "nonindv_power3d", "indv_power7d", "nonindv_power7d", 
+            "indv_power14d", "nonindv_power14d", "indv_power30d", "nonindv_power30d",
+            "indv_buy_pcap_prpd7d30", "indv_buy_pcap_prpd14d60", "indv_buy_pcap_prpd30d120", "indv_sell_pcap_prpd7d30",
+            "indv_sell_pcap_prpd14d60", "indv_sell_pcap_prpd30d120", 
+            "nonindv_buy_pcap_prpd7d30", "nonindv_buy_pcap_prpd14d60", "nonindv_buy_pcap_prpd30d120",
+            "nonindv_sell_pcap_prpd7d30", "nonindv_sell_pcap_prpd14d60", "nonindv_sell_pcap_prpd30d120",
+            "indv_buy_pcap_prp_mrkt", "indv_sell_pcap_prp_mrkt", "nonindv_buy_pcap_prp_mrkt", "nonindv_sell_pcap_prp_mrkt",
+            "indv_net_dev_mrkt", "nonindv_net_dev_mrkt", "indv_net_dev_mrkt3d", "nonindv_net_dev_mrkt3d"
+        ],
+        "ReturnBased":[
+            "ret1d_log", "ret3d_log", "ret7d_log", "ret14d_log", "ret30d_log", "ret60d_log", "ret90d_log", "ret120d_log", "ret300d_log", 
+            "lastclose_log", 
+            "buy_queue_locked","sell_queue_locked",
+            "prp_high30d", "prp_high60d", "prp_high90d", "prp_high120d", "prp_high300d",
+            "prp_low30d", "prp_low60d", "prp_low90d", "prp_low120d", "prp_low300d",
+            "mrkt_prp_high30d", "mrkt_prp_high60d", "mrkt_prp_high90d", "mrkt_prp_high120d", "mrkt_prp_high300d",
+            "mrkt_prp_low30d", "mrkt_prp_low60d", "mrkt_prp_low90d", "mrkt_prp_low120d", "mrkt_prp_low300d",
+            "prp_high30d_dev_mrkt", "prp_high60d_dev_mrkt", "prp_high90d_dev_mrkt",
+            "prp_high120d_dev_mrkt", "prp_high300d_dev_mrkt", "prp_low30d_dev_mrkt",
+            "prp_low60d_dev_mrkt", "prp_low90d_dev_mrkt", "prp_low120d_dev_mrkt", "prp_low300d_dev_mrkt",
+            "indret_log", "indret_2d_log", "indret_3d_log", "indret_7d_log", "indret_14d_log", "indret_21d_log", "indret_30d_log", 
+            "indret_60d_log", "indret_90d_log",  "indret_120d_log",  "indret_300d_log", 
+            "ret_wrt_ind_log", "ret_wrt_ind_2d_log", "ret_wrt_ind_3d_log", "ret_wrt_ind_7d_log", 
+            "ret_wrt_ind_14d_log", "ret_wrt_ind_21d_log", "ret_wrt_ind_30d_log", "ret_wrt_ind_60d_log", 
+            "ret_wrt_ind_90d_log", "ret_wrt_ind_120d_log", "ret_wrt_ind_300d_log", 
+            "ret_wrt_grp_ind_1d_log", "ret_wrt_grp_ind_3d_log","ret_wrt_grp_ind_7d_log", "ret_wrt_grp_ind_14d_log", 
+            "ret_wrt_grp_ind_30d_log", "ret_wrt_grp_ind_60d_log", "ret_wrt_grp_ind_90d_log", "ret_wrt_grp_ind_120d_log","ret_wrt_grp_ind_300d_log", 
+            "ret_wrt_dlr_ind_1d_log", "ret_wrt_dlr_ind_3d_log", "ret_wrt_dlr_ind_7d_log", "ret_wrt_dlr_ind_14d_log",
+            "ret_wrt_dlr_ind_30d_log", "ret_wrt_dlr_ind_60d_log", "ret_wrt_dlr_ind_90d_log",
+            "ret_wrt_dlr_ind_120d_log", "ret_wrt_dlr_ind_300d_log"
+        ],
+        "TechIndicators":[
+            "base_line_difference", "chikou_span_sell", "chikou_span_buy", 
+            "cci", "cci_buy_signal", "cci_sell_signal", 
+            "rvi", "rvi_buy_signal", "rvi_sell_signal", 
+            "roc", "roc_buy_signal", "roc_sell_signal", 
+            "mfi", "mfi_buy_signal", "mfi_sel_signal", 
+            "cci_light", "cci_light_buy_signal", 
+            "ema_buy", "ema_sell", 
+            "aroon_buy", "aroon_sell", 
+            "rsi", "rsi_buy", "rsi_sell", 
+            "uo", "uo_buy", "uo_sell", 
+            "stoch_osci", "stoch_buy", "stoch_sell", 
+            "obv_buy", "obv_sell", 
+            "macd", "macd_signalline", "macd_buy", "macd_sell", 
+            "ema_light", "ema_light_buy_signal"
+        ]
+    },
+    "classifier_horizon":{
+        "2d":{
+            "model_2d_buy_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_2d_sell_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_2d_sign_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_2d_buy_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_2d_sell_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_2d_sign_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_2d_buy_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_2d_sell_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_2d_sign_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "ensemble_2d_buy_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 2 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Buy"
+            }, 
+            "ensemble_2d_sell_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 2 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sell"
+            }, 
+            "ensemble_2d_sign_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 2 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sign"
+            }
+        }, 
+        "7d":{
+            "model_7d_buy_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 7 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_7d_sell_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 7 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_7d_sign_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 7 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_7d_buy_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 7 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_7d_sell_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 7 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_7d_sign_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 7 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_7d_buy_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 7 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_7d_sell_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 7 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_7d_sign_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 7 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "ensemble_7d_buy_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 7 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Buy"
+            }, 
+            "ensemble_7d_sell_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 7 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sell"
+            }, 
+            "ensemble_7d_sign_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 7 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sign"
+            }
+        }, 
+        "14d":{
+            "model_14d_buy_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 14 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_14d_sell_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 14 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_14d_sign_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 14 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_14d_buy_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 14 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_14d_sell_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 14 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_14d_sign_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 14 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_14d_buy_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 14 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_14d_sell_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 14 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_14d_sign_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 14 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "ensemble_14d_buy_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 14 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Buy"
+            }, 
+            "ensemble_14d_sell_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 14 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sell"
+            }, 
+            "ensemble_14d_sign_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 14 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sign"
+            }
+        }, 
+        "21d":{
+            "model_21d_buy_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 21 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_21d_sell_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 21 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_21d_sign_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 21 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_21d_buy_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 21 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_21d_sell_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 21 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_21d_sign_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 21 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_21d_buy_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 21 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_21d_sell_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 21 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_21d_sign_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 21 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "ensemble_21d_buy_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 21 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Buy"
+            }, 
+            "ensemble_21d_sell_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 21 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sell"
+            }, 
+            "ensemble_21d_sign_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 21 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sign"
+            }
+        }, 
+        "30d":{
+            "model_30d_buy_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 30 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_30d_sell_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 30 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_30d_sign_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 30 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_30d_buy_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 30 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_30d_sell_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 30 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_30d_sign_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 30 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_30d_buy_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 30 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_30d_sell_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 30 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_30d_sign_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 30 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "ensemble_30d_buy_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 30 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Buy"
+            }, 
+            "ensemble_30d_sign_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 30 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sign"
+            }
+        }, 
+        "60d":{
+            "model_60d_buy_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_60d_sell_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_60d_sign_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_60d_buy_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 60 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_60d_sell_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 60 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_60d_sign_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 60 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_60d_buy_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_60d_sell_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_60d_sign_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "ensemble_60d_buy_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 2 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Buy"
+            }, 
+            "ensemble_60d_sell_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 2 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sell"
+            }, 
+            "ensemble_60d_sign_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 2 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sign"
+            }
+        }, 
+        "90d":{
+            "model_90d_buy_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_90d_sell_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_90d_sign_RF_ValueBased":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ValueBased",
+                "selected_features":"ValueBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_90d_buy_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 90 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_90d_sell_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 90 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_90d_sign_RF_ReturnBased":{
+                "model_description":"Random Forest for all return based for 90 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"ReturnBased",
+                "selected_features":"ReturnBased",
+                "model_param":{
+                    "n_estimator":50,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "model_90d_buy_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Buy"
+            }, 
+            "model_90d_sell_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sell"
+            }, 
+            "model_90d_sign_RF_TechIndicators":{
+                "model_description":"Random Forest for all value based for 2 days",
+                "model_algorithm_name":"RF",
+                "model_feature_selection_name":"TechIndicators",
+                "selected_features":"TechIndicators",
+                "model_param":{
+                    "n_estimator":20,
+                    "max_depth":null
+                },
+                "label_name":"Sign"
+            }, 
+            "ensemble_90d_buy_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 2 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Buy"
+            }, 
+            "ensemble_90d_sell_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 2 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sell"
+            }, 
+            "ensemble_90d_sign_AdaBoost_Allclf":{
+                "model_description":"AdaBoost for all classifiers for 2 days",
+                "model_algorithm_name":"AdaBoost",
+                "model_feature_selection_name":"Allclf",
+                "selected_features":null,
+                "model_param":{
+                    "n_estimator":100
+                },
+                "label_name":"Sign"
+            }
+        }
+    }
+	
+}
+
+

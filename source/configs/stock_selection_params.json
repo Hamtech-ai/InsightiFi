@@ -1,0 +1,165 @@
+{   
+    "label_info":{
+        "Buy":{
+            "label_map":[0,0,0,1]
+        },
+        "Sell":{
+            "label_map":[1,0,0,0]
+        },
+        "Sign":{
+            "label_map":[0,0,1,1]
+        }
+    },
+    "feature_info":
+            ["date","stock_name",
+                "ret1d_log", "ret3d_log", "ret30d_log" , "ret60d_log" , 
+                 "ret90d_log" , 
+                 "buy_queue_locked" , "sell_queue_locked" ,
+                 "prp_high30d" ,  "prp_high60d" , 
+                 "prp_high90d" , 
+                 "prp_low30d" ,  "prp_low60d" , 
+                 "prp_low90d" ,
+                 "prp_value3d30d" , "prp_value5d60d" ,
+                 "indv_net_count_prp7d30" ,
+                 "indv_relnet_value_d14" , "indv_relnet_value_d30" , 
+                 "indv_relnet_value_d90" ,
+                 "indv_relnet_value_d60" ,
+                 "nonindv_net_count_prp7d30" ,
+                 "nonindv_relnet_value_d14" , "nonindv_relnet_value_d30" , 
+                 "nonindv_relnet_value_d90" ,
+                 "nonindv_relnet_value_d60" ,
+                 "indv_power7d" ,
+                 "indv_power14d" ,
+                 "indv_power30d" ,
+                 "indv_buy_pcap_prpd14d60" , 
+                 "indv_sell_pcap_prpd7d30" ,
+                 "indv_sell_pcap_prpd14d60" ,
+                 "nonindv_buy_pcap_prpd7d30" ,  "nonindv_buy_pcap_prpd14d60" , 
+                 "nonindv_sell_pcap_prpd7d30" ,  "nonindv_sell_pcap_prpd14d60" , 
+                 "base_line_difference" ,
+                 "chikou_span_sell" ,
+                 "chikou_span_buy" ,
+                 "cci" , "rvi" ,
+                 "roc" ,
+                 "mfi" , "cci_light" ,
+                 "rsi" ,
+                 "uo" , "stoch_osci" ,
+                 "macd" , "macd_signalline" , "ema_light" ,
+                 "prp_high30d_dev_mrkt" ,
+                 "ret_wrt_ind_log" , "ret_wrt_ind_3d_log" ,
+                 "ret_wrt_ind_7d_log" ,  "ret_wrt_ind_14d_log" ,
+                 "ret_wrt_ind_21d_log" , "ret_wrt_ind_30d_log" , "ret_wrt_ind_60d_log" ,
+                 "ret_wrt_ind_90d_log" ,
+                 "ret_wrt_ind_90d_log" ,
+                 "prp_high60d_dev_mrkt" ,
+                 "prp_high90d_dev_mrkt" ,
+                 "prp_low30d_dev_mrkt" , "prp_low60d_dev_mrkt" ,
+                 "prp_low90d_dev_mrkt" ,
+                 "ret_wrt_grp_ind_1d_log" , "ret_wrt_grp_ind_3d_log" , "ret_wrt_grp_ind_7d_log" ,
+                 "ret_wrt_grp_ind_14d_log" , "ret_wrt_grp_ind_30d_log" , "ret_wrt_grp_ind_60d_log" ,
+                 "ret_wrt_grp_ind_90d_log" ,
+                 "ret_wrt_dlr_ind_1d_log" ,  "ret_wrt_dlr_ind_3d_log" , "ret_wrt_dlr_ind_7d_log" ,
+                 "ret_wrt_dlr_ind_14d_log" , "ret_wrt_dlr_ind_30d_log" , "ret_wrt_dlr_ind_60d_log" ,
+                 "ret_wrt_dlr_ind_90d_log" ,
+                 "shadow_up7d" ,  "shadow_low7d" ,  "body7d" ,
+                 "shadow_up14d" ,  "shadow_low14d" ,  "body14d" ,
+                 "shadow_up21d" ,  "shadow_low21d" ,  "body21d" ,
+                 "shadow_up30d" ,  "shadow_low30d" ,  "body30d" ,
+                 "shadow_up60d" ,  "shadow_low60d" ,  "body60d" ,
+                 "distance_from_sma10d" ,
+                 "distance_from_sma21d" ,
+                 "distance_from_sma30d" ,
+                 "distance_from_sma60d" ,
+                 "indret_2d_log",
+                 "indret_3d_log",
+                 "indret_7d_log",
+                 "indret_14d_log",
+                 "indret_21d_log",
+                 "indret_30d_log",
+                 "indret_60d_log",
+                 "indret_90d_log"
+               ],
+        
+    "rf_params": {
+        "Buy":{
+            "2d": {
+                "n_estimators" : [400, 200, 600]
+            } ,
+            "7d": {
+                "n_estimators" : [400, 500, 600]
+            } ,
+            "14d": {
+                "n_estimators" : [900, 1000, 1500]
+            },
+            
+             "21d": {
+                    "n_estimators" : [1000, 1500, 800]
+                    },
+                    
+                    
+            "30d": {
+                "n_estimators" : [900, 1000, 500],
+                "criterion" : ["entropy", "gini", "entropy"],
+                "bootstrap" : ["True", "True", "True"],
+                "min_samples_leaf": [1, 2, 3],
+                "max_depth": [25, 20, 10],
+                "class_weight" : ["balanced"]
+            }
+
+            },
+    
+            "Sell":{
+                "2d": {
+                    "n_estimators" : [400, 200, 600]
+                } ,
+                "7d": {
+                    "n_estimators" : [400, 500, 600]
+                } ,
+                "14d": {
+                    "n_estimators" : [900, 1000, 1500]
+                    
+                                      
+                },
+                
+                 "21d": {
+                    "n_estimators" : [1000, 1500, 800]
+                    },
+                    
+                "30d": {
+                    "n_estimators" : [900, 1000, 500],
+                    "criterion" : ["entropy", "gini", "entropy"],
+                    "bootstrap" : ["True", "True", "True"],
+                    "min_samples_leaf": [1, 2, 3],
+                    "max_depth": [25, 20, 10],
+                    "class_weight" : ["balanced", "balanced_subsample"]
+                }    
+    
+                },   
+            "Sign":{
+                "2d": {
+                    "n_estimators" : [400, 200, 600]
+                } ,
+                "7d": {
+                    "n_estimators" : [400, 500, 600]
+                } ,
+                "14d": {
+                    "n_estimators" : [900, 1000, 1500]
+                },
+                 "21d": {
+                    "n_estimators" : [1000, 1500, 800]
+                    },
+                    
+                "30d": {
+                    "n_estimators" : [900, 1000, 1500],
+                    "criterion" : ["entropy", "gini", "entropy"],
+                    "bootstrap" : ["True", "True", "True"],
+                    "min_samples_leaf": [1, 2, 3],
+                    "max_depth": [25, 20, 10],
+                    "class_weight" : ["balanced", "balanced_subsample"]
+                }    
+    
+                }     
+            }          
+    
+}
+    
