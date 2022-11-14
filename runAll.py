@@ -210,7 +210,7 @@ def runModel():
     )
 
     output.to_csv(
-        'output.csv', 
+        'outputFeatures.csv', 
         index = False
     )
 
