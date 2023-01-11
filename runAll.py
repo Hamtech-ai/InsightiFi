@@ -1,15 +1,16 @@
 import datetime as datetime
-from feature_extraction.indicator_features import *
-from feature_extraction.daily_features import *  
-import matplotlib.pyplot as plt
-from model.model import *
+
 import numpy as np
 import pandas as pd
-
 import pytse_client as tse
 from pytse_client.download import download_financial_indexes
 from sklearn.model_selection import train_test_split
 from zigzag import peak_valley_pivots
+
+from feature_extraction.daily_features import *
+from feature_extraction.indicator_features import *
+from model.model import *
+
 
 def runModel():
 
@@ -53,7 +54,6 @@ def runModel():
         columns = {'value': 'TEDPIX'}, 
         inplace = True
     )
-
     foladHist = foladHist[foladHist.columns].merge(
         marketIndex, 
         how = 'left', 
@@ -88,8 +88,6 @@ def runModel():
         on = 'date'
     )
 
-    print(f'Shape of price features: {priceFeatures.shape}')
-
     bbCols = BB(priceFeatures)
     emaCols = EMA(foladHist)
     macdCols = MACD(foladHist)
@@ -108,8 +106,6 @@ def runModel():
         ], axis = 1
     )
 
-    print(f'Shape of indicator features: {indicatorFeatures.shape}')
-
     features = pd.concat(
         [
             priceFeatures,
@@ -117,22 +113,18 @@ def runModel():
         ],
         axis = 1
     )
-    print(f'shape of features after concatenation: {features.shape}')
 
     features.dropna(
         axis = 'columns', 
         thresh = len(features) - 450,
         inplace = True
     )
-    print(f'shape of features after drop non-essential columns: {features.shape}')
-    print(f'names of the columns that dropped: {(indicatorFeatures.columns.union(priceFeatures.columns)).difference(features.columns).to_list()}')
 
     features.dropna(
         axis = 'index', 
         how = 'any',
         inplace = True
     )
-    print(f'shape of features after drop non-essential rows: {features.shape}')
 
 
     ## Labeling data with zigzag ##
@@ -154,24 +146,32 @@ def runModel():
         method = 'ffill', 
         inplace = True
     )
-    # signals.replace(
-    #     to_replace = -1, 
-    #     value = 0,  
-    #     inplace = True
-    # )
+
+    pivots = pd.DataFrame(
+        peak_valley_pivots(
+            foladHist['adjClose'], 
+            0.075, 
+            -0.075
+        ) * -1,
+        columns = ['label']
+    )
+    signals = pivots.replace(
+        to_replace = 0, 
+        value = np.nan
+    )
+    signals.fillna(
+        method = 'ffill', 
+        inplace = True
+    )
     pivots.columns = ['pivots']
     signals['date'] = foladHist['date']
     pivots['date'] = foladHist['date']
-
-    print(f'Number of each class {np.unique(signals["label"], return_counts = True)}')
 
     initFeatures = features.merge(
         signals,
         how = 'left',
         on = 'date'
     )
-
-    print(f'Number of initial features: {initFeatures.shape}')
 
     ## Modeling ##
     ##############
@@ -182,39 +182,16 @@ def runModel():
         shuffle = False, 
         random_state = 0
     )
-
     trainPred, testPred, trainProb, testProb, featureImport, trainClassReport, testClassReport = RFClf(X_train, y_train, X_test, y_test)
 
     ## Getting output ##
     ####################
     
-    def convertLabel(df, colName):
-        name = str(colName + '01')
-        df.loc[initFeatures[colName] == -1, name] = 0
-        df[name] = df[name].fillna(1)
-        return df
-
-    initFeatures['priChange'] = initFeatures['adjClose'] - initFeatures['yesterday']
-    labelPred = np.concatenate((trainPred, testPred), axis = 0)
-    initFeatures['labelPred'] = labelPred
-    labelProb = np.concatenate((trainProb[:, 1], testProb[:, 1]), axis = 0)
-    initFeatures['labelProb'] = labelProb
-
-    initFeatures = convertLabel(initFeatures, 'label')
-    initFeatures = convertLabel(initFeatures, 'labelPred')
-
-    output = initFeatures.merge(
-        pivots,
-        how = 'left',
-        on = 'date'
-    )
-
-    output.to_csv(
-        'outputFeatures.csv', 
-        index = False
-    )
-
-    if output['labelPred'].iloc[-1] == 1:
-        print(f'Buy Postition with {(output["labelProb"].iloc[-1]):0.0%} probability') 
-    else:
-        print(f'Sell Position with {(1 - output["labelProb"].iloc[-1]):0.0%} probability')
+    output = pd.DataFrame()
+    output.index = initFeatures['jdate']
+    labelProb = np.concatenate((trainProb, testProb), axis = 0)[:,1]
+    output['labelProb'] = labelProb
+    output = output.to_dict()
+    output = output['labelProb']
+    
+    return output
