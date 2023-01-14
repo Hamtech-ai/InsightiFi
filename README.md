@@ -38,10 +38,9 @@ To check complete Documentation for all steps check our wiki page.
 - [ ] Using NLP tools to enhance accuracy of model in daily predictions.
 
 # Contribute :chains:
-If you want to help us for better models and new approaches, please contact us, we will be happy.
-
-Email: masoudparpanchi@gmail.com | a.hanifi1375@gmail.com 
-
-Or
-
+<a href="https://github.com/Hamtech-ai/iran-stock-market/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Hamtech-ai/iran-stock-market" />
+</a></br></br>
+Email:  <a href="mailto:masoudparpanchi@gmail.com">masoudparpanchi@gmail.com</a> | <a href="mailto:a.hanifi1375@gmail.com ">a.hanifi1375@gmail.com </a></br>
+Or</br>
 edit code and send pull request.
