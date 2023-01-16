@@ -1,3 +1,4 @@
 **/__pycache__/
-venv/
+**/financial_index_data/
+**/tickers_data/
 .hamtech/

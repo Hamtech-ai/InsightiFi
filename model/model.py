@@ -28,4 +28,3 @@ def RFClf(train_data, train_label, test_data, test_label):
     testClassReport = metrics.classification_report(test_label, testPred)
 
     return trainPred, testPred, trainProb, testProb, featureImport, trainClassReport, testClassReport
-

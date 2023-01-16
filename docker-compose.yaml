@@ -1,0 +1,11 @@
+services:
+  jupyterlab:
+    image: model:latest
+    container_name: modelinstance
+    ports:
+    - '8888:8888'
+  fastapi:
+    image: fast-api:latest
+    container_name: fastapiinstance
+    ports:
+    - '8000:8000'

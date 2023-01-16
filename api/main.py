@@ -1,5 +1,7 @@
+import pandas as pd
 from fastapi import FastAPI
-from runAll import runModel
+
+df = pd.read_csv('./api/output_for_API.csv')
 
 app = FastAPI(
     title = "buy/sell signals for Mobarakeh steel company shares.",
@@ -14,5 +16,5 @@ def read_root():
 
 @app.get("/get_predict")
 def get_predict():
-    resp = runModel()
+    resp = df.set_index('jdate')['labelProb'].to_dict()
     return resp
