@@ -1,7 +1,7 @@
 import pandas as pd
 from fastapi import FastAPI
 
-df = pd.read_csv('./api/output_for_API.csv')
+df = pd.read_csv('./output_for_API.csv')
 
 app = FastAPI(
     title = "buy/sell signals for Mobarakeh steel company shares.",
