@@ -1,10 +1,16 @@
 services:
-  jupyterlab:
-    image: model:latest
-    container_name: modelinstance
-    ports:
-    - '8888:8888'
+  # model:
+  #   build: .
+  #   image: model:latest
+  #   container_name: modelinstance
+  #   volumes:
+  #   - .:/app
+  #   ports:
+  #   - '8888:8888'
   fastapi:
+    build: 
+      context: .
+      dockerfile: api.Dockerfile
     image: fast-api:latest
     container_name: fastapiinstance
     ports:
