@@ -22,7 +22,7 @@ To check complete Documentation for all steps check our wiki page.
 This project exists thanks to all the people who contribute:
 <p align="center"><a href="https://github.com/Hamtech-ai/iran-stock-market/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Hamtech-ai/iran-stock-market" />
-</a></p></br>
+</a></p>
 Email:  <a href="mailto:masoudparpanchi@gmail.com">masoudparpanchi@gmail.com</a> | <a href="mailto:a.hanifi1375@gmail.com ">a.hanifi1375@gmail.com </a></br>
 Or</br>
 edit code and send pull request.
