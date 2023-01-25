@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 
-## calender features ##
+## calendar features ##
 #######################
 def calender_features(stock):
     df = stock.copy()

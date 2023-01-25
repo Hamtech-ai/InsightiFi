@@ -6,7 +6,8 @@ import pandas as pd
 import pytse_client as tse
 from pytse_client.download import download_financial_indexes
 from sklearn.model_selection import train_test_split
-from zigzag import peak_valley_pivots
+
+from zigzag_indicator.zigzag import peak_valley_pivots
 
 warnings.filterwarnings('ignore')
 from feature_extraction.daily_features import *
@@ -135,37 +136,24 @@ def runModel():
 
     pivots = pd.DataFrame(
         peak_valley_pivots(
-            foladHist['adjClose'], 
-            0.075, 
-            -0.075
-        ) * -1,
+            foladHist['adjClose'].to_list(), 0.1
+        ) ,
         columns = ['label']
-    )
+    ) * -1
+
     signals = pivots.replace(
         to_replace = 0, 
         value = np.nan
     )
     signals.fillna(
         method = 'ffill', 
+        inplace = True
+    )
+    signals.fillna(
+        method = 'bfill', 
         inplace = True
     )
 
-    pivots = pd.DataFrame(
-        peak_valley_pivots(
-            foladHist['adjClose'], 
-            0.075, 
-            -0.075
-        ) * -1,
-        columns = ['label']
-    )
-    signals = pivots.replace(
-        to_replace = 0, 
-        value = np.nan
-    )
-    signals.fillna(
-        method = 'ffill', 
-        inplace = True
-    )
     pivots.columns = ['pivots']
     signals['date'] = foladHist['date']
     pivots['date'] = foladHist['date']
