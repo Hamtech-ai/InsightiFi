@@ -1,6 +1,17 @@
 # About this project
-This is a tool for traders to help them decide to buy/sell/hold, or for ML engineers who want to make their hands dirty in working with Time series/Economical data. 
+This is a tool for traders to help them decide to buy/sell/hold, or for ML engineers who want to make their hands dirty in working with Time series/Economical data.
 
+To make better predictions, been used the following indicators and features:
+- **Trend Indicator**: Exponential Moving Average (EMA), Simple Moving Average (SMA), Moving Average Convergence Divergence (MACD).
+- **Momentum Indicator**: Relative Strength Index (RSI), Stochastic Oscillator (SR).
+- **Volatility Indicator**: Bollinger Bands (BB).
+- **Other Features**: Calendar, Candlestick, Individual and Non-Individual Trades, Price Based Ratios, Daily Return (DR), Daily Logarithmic Return (DLR), Cumulative Return (CR).
+
+The approach to the problem is considered a two-class classification project (any positive change compared to the previous trading day, is labeled as one, and vice versa, a negative one). Random forests are currently being used as the model and by using the Bayesian method, the hyperparameters of this model are optimized. 
+
+An API is available to access the model's output, which is a probability between zero and one on all trading days. This application is dockerized, and its flow diagram is as follows:
+
+![](.github/flow_diagram.png)
 # How to Use
 1. Clone the project:
 ```command
@@ -25,7 +36,9 @@ The following three primary reasons led us to choose [pytse-client](https://gith
 
 # TODO
 - [ ] Using a cron job to run the model daily.
+- [ ] Improved visualization of indicators and model performance, and rewritten Jupyter Notebook.
 - [ ] Deployment With Docker Containers.
+- [ ] Using more indicators, such as Ichimoku, to gain more insight into daily price data.
 - [ ] Using NLP tools to enhance accuracy of model in daily predictions.
 
 # Contribute
