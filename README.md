@@ -6,7 +6,7 @@ To make better predictions, been used the following indicators and features:
 - **Volatility Indicator**: Bollinger Bands (BB).
 - **Other Features**: Calendar, Candlestick, Individual and Non-Individual Trades, Price Based Ratios, Daily Return (DR), Daily Logarithmic Return (DLR), Cumulative Return (CR).
 
-A two-class classification has been considered to be the best approach to the project. Using the **zigzag** indicator, data is labeled. On days where the slope of the zigzag line is positive, all those trading days are considered to be buy positions (+1). In reverse, when the slope is negative, all those trading days are considered to be sell positions (-1). **Random forests** are currently being used as the model and by using the **Bayesian** method, the hyperparameters of this model are optimized. 
+A two-class classification has been considered to be the best approach to the project. Data is labeled using the **zigzag** indicator. The days where the slope of the zigzag line is positive, all those trading days are considered to be buy positions (+1). In contrast, when the slope is negative, all those trading days are considered to be sell positions (-1). **Random forests** are currently being used as the model and the hyperparameters of the model are optimized by using the **Bayesian** method. 
 
 An API is available to access the model's output, which is a probability between zero and one on all trading days. This application is dockerized, and its flow diagram is as follows:
 
