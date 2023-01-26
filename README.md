@@ -1,13 +1,12 @@
 # About this project
 This is a tool for traders to help them decide to buy/sell/hold, or for ML engineers who want to make their hands dirty in working with Time series/Economical data.
-
 To make better predictions, been used the following indicators and features:
 - **Trend Indicator**: Exponential Moving Average (EMA), Simple Moving Average (SMA), Moving Average Convergence Divergence (MACD).
 - **Momentum Indicator**: Relative Strength Index (RSI), Stochastic Oscillator (SR).
 - **Volatility Indicator**: Bollinger Bands (BB).
 - **Other Features**: Calendar, Candlestick, Individual and Non-Individual Trades, Price Based Ratios, Daily Return (DR), Daily Logarithmic Return (DLR), Cumulative Return (CR).
 
-The approach to the problem is considered a two-class classification project (any positive change compared to the previous trading day, is labeled as one, and vice versa, a negative one). Random forests are currently being used as the model and by using the Bayesian method, the hyperparameters of this model are optimized. 
+A two-class classification has been considered to be the best approach to the project. Using the **zigzag** indicator, data is labeled. On days where the slope of the zigzag line is positive, all those trading days are considered to be buy positions (+1). In reverse, when the slope is negative, all those trading days are considered to be sell positions (-1). **Random forests** are currently being used as the model and by using the **Bayesian** method, the hyperparameters of this model are optimized. 
 
 An API is available to access the model's output, which is a probability between zero and one on all trading days. This application is dockerized, and its flow diagram is as follows:
 
