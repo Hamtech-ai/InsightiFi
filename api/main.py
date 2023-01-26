@@ -3,10 +3,16 @@ from fastapi import FastAPI
 
 df = pd.read_csv('./output_for_API.csv')
 
+description = """
+## Root
+Hamtech members!
+## Get Predict
+Buy or sell probability in a daily timeframe (a closer probability to one indicates a stronger buy position, while a closer probability to zero indicates a stronger sell position). 🚀
+"""
 app = FastAPI(
-    title = "buy/sell signals for Mobarakeh steel company shares.",
+    title = "buy/sell signals for Mobarakeh steel company shares",
     version = "0.0.1",
-    description = "Buy or sell probability in a daily timeframe (a closer probability to one indicates a stronger buy position, while a closer probability to zero indicates a stronger sell position).",
+    description = description,
     docs_url="/docs"
 )
 
