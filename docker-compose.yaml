@@ -1,17 +1,21 @@
 services:
-  model:
+  prediction:
     build: 
-      context: ./model
-    image: model:latest
-    container_name: modelinstance
-    volumes:
-    - .:/app
+      context: ./prediction
+    image: prediction:latest
+    container_name: predictioninstance
+    # volumes:
+    # - share:/app/output_for_API.csv
     ports:
     - '8888:8888'
   fastapi:
     build: 
       context: ./api
     image: fast-api:latest
+    depends_on:
+      - prediction
     container_name: fastapiinstance
+    # volumes:
+    # - /app:share
     ports:
     - '8000:8000'
