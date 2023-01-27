@@ -25,7 +25,7 @@ docker-compose up --build -d
   - -d will run the application in the background.
 
 # Wiki Page
-To check complete Documentation for all steps check our [wiki page](https://github.com/Hamtech-ai/iran-stock-market/wiki).
+To check complete Documentation for all steps, check our [wiki page](https://github.com/Hamtech-ai/iran-stock-market/wiki).
 
 # Dataset
 The following three primary reasons led us to choose [pytse-client](https://github.com/Glyphack/pytse-client) library as our ML dataset of the Iranian stock market:
