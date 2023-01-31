@@ -183,7 +183,7 @@ def runModel():
     labelProb = np.concatenate((trainProb, testProb), axis = 0)[:,1]
     output['labelProb'] = labelProb
     try:
-        output.to_csv('../api/output_for_API.csv', index = False) # if code run without docker
+        output.to_csv('../api/inputs/output_for_API.csv', index = False) # if code run without docker
     except: 
         output.to_csv('output_for_API.csv', index = False) # if code run in docker
     

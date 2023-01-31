@@ -3,9 +3,9 @@ services:
     build: 
       context: ./prediction
     image: prediction:latest
-    container_name: predictioninstance
-    # volumes:
-    # - share:/app/output_for_API.csv
+    container_name: prediction-instance
+    volumes:
+    - shared_data:/app/
     ports:
     - '8888:8888'
   fastapi:
@@ -14,8 +14,10 @@ services:
     image: fast-api:latest
     depends_on:
       - prediction
-    container_name: fastapiinstance
-    # volumes:
-    # - /app:share
+    container_name: fastapi-instance
+    volumes:
+    - shared_data:/src/inputs/
     ports:
     - '8000:8000'
+volumes:
+  shared_data:

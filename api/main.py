@@ -1,7 +1,7 @@
 import pandas as pd
 from fastapi import FastAPI
 
-df = pd.read_csv('./output_for_API.csv')
+df = pd.read_csv('./inputs/output_for_API.csv')
 
 description = """
 ## Root
