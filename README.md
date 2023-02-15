@@ -1,6 +1,6 @@
 # InsightiFi 
 
-![](.github/images/logo.svg)
+![](imgs/logo.svg)
 ---
 **InsightiFi** is a continuation of [Hamtech](https://ham-tech.ir/)'s internship program. [Alireza](https://github.com/AlirezaHanifi), [Mahdi](https://github.com/mahdi-mhdn), [Mohmmad](https://github.com/moshafieeha), and [Shabnam](https://github.com/ShabnamGhadiri) were members of that group with [Masoud](https://github.com/masoudMZB) as a mentor.
 
@@ -10,7 +10,7 @@
   - [Without docker](###Without_docker)
 - [Wiki Page](##Wiki_Page)
 - [Dataset](##Dataset)
-- [TODO](##TODO)
+- [ToDo](##ToDo)
 - [Contribute](##Contribute)
 
 ## About InsightiFi
@@ -25,7 +25,7 @@ A two-class classification has been considered to be the best approach to the pr
 
 An API is available to access the model's output, which is a probability between zero and one on all trading days. This application is dockerized, and its flow diagram is as follows:
 
-![](.github/images/flow_diagram.png)
+![](imgs/flow_diagram.png)
 
 ## How to Use?
 
@@ -60,7 +60,7 @@ The following three primary reasons led us to choose [pytse-client](https://gith
 3. Has a history of buying stocks over long periods.
 
 
-## TODO
+## ToDo
 - [x] ~~Deployment With Docker Containers.~~
 - [ ] Using a cron job to run the model daily.
 - [ ] Improved visualization of indicators and model performance, and rewritten Jupyter Notebook.
@@ -69,7 +69,7 @@ The following three primary reasons led us to choose [pytse-client](https://gith
 
 
 ## Contribute
-Before opening a [PR](https://github.com/Hamtech-ai/iran-stock-market/pulls), please read our [contributor](/.github/CONTRIBUTING.md) guide. This project exists thanks to all the people who contribute:
-<p align="center"><a href="./graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Hamtech-ai/iran-stock-market" />
+Before opening a [PR](https://github.com/Hamtech-ai/iran-stock-market/pulls), please read our [contributor](CONTRIBUTING.md) guide. This project exists thanks to all the people who contribute:
+<p align="center"><a href="https://github.com/Hamtech-ai/InsightiFi/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Hamtech-ai/InsightiFi" />
 </a></p>
