@@ -154,6 +154,8 @@ def ret_based(ticker):
 
     return_df = pd.DataFrame(
         {
+            'prc_chang_1d': (df['adjClose'] - df['yesterday']),
+
             'ret_1d':((df['adjClose']- df['yesterday']) / df['yesterday']),
             'ret_3d':((df['adjClose']- df['yesterday']) / df['yesterday']).rolling(3).sum(),
             'ret_1w':((df['adjClose']- df['yesterday']) / df['yesterday']).rolling(7).sum(),
