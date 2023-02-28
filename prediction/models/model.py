@@ -27,7 +27,7 @@ def RFClf(train_data, train_label, test_data, test_label):
     trainClassReport = metrics.classification_report(train_label, trainPred)
     testClassReport = metrics.classification_report(test_label, testPred)
 
-    trainCM = metrics.confusion_matrix(train_label, trainPred, labels = ['strong_buy', 'buy', 'neutral', 'sell', 'strong_sell'])
-    testCM = metrics.confusion_matrix(test_label, testPred, labels = ['strong_buy', 'buy', 'neutral', 'sell', 'strong_sell'])
+    trainCM = metrics.confusion_matrix(train_label, trainPred)
+    testCM = metrics.confusion_matrix(test_label, testPred)
 
     return trainPred, testPred, trainProb, testProb, featureImport, trainClassReport, testClassReport, trainCM, testCM, clf.classes_
