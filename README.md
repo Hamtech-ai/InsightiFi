@@ -21,9 +21,9 @@ To make better predictions, been used the following indicators and features:
 - **Volatility Indicator**: Bollinger Bands (BB).
 - **Other Features**: Calendar, Candlestick, Individual and Non-Individual Trades, Price Based Ratios, Daily Return (DR), Daily Logarithmic Return (DLR),  Weighted Values.
 
-A two-class classification has been considered to be the best approach to the project. Data is labeled using the **zigzag** indicator. The days where the slope of the zigzag line is positive, all those trading days are considered to be buy positions (+1). In contrast, when the slope is negative, all those trading days are considered to be sell positions (-1). **Random forests** are currently being used as the model and the hyperparameters of the model are optimized by using the **Bayesian** method. 
-
-An API is available to access the model's output, which is a probability between zero and one on all trading days. This application is dockerized, and its flow diagram is as follows:
+This project comprises two separate yet interconnected services, namely the prediction service and the API service, which are linked through a docker-compose.</br>
+The prediction service is responsible for retrieving daily data, conducting model training, and producing output predictions. A cron job is executed each day to execute this service. Additionally, the prediction service provides users with the option of accessing a Jupyter Notebook environment to gain a better understanding of the model's performance.</br>
+The API service, built using the FastAPI library, serves as a means for users to access the predicted model's output. Specifically, the API service retrieves the latest forecast of the day, which is stored in a shared volume by the prediction service and delivers it to the user. This allows for easy access to the predicted results for end-users.
 
 ![](imgs/flow_diagram.png)
 
@@ -45,23 +45,24 @@ docker-compose up --build -d
 ### Without docker
 1. Clone the project:
 ```command
-git clone https://github.com/Hamtech-ai/iran-stock-market
+git clone https://github.com/Hamtech-ai/InsightiFi.git
+cd InsightiFi
 ```
 
-
 ## Wiki Page
-To check complete Documentation for all steps check our [wiki page](https://github.com/Hamtech-ai/iran-stock-market/wiki). (In progress...)
+To check complete Documentation for all steps check our [wiki page](https://github.com/Hamtech-ai/iran-stock-market/wiki) or our [Google Docs](https://docs.google.com/document/d/1NbIWJfHzW-8RMb3ehISZkVnc9NT_eC4ANTSgOyonVdQ/edit?usp=sharing). (In progress...)
 
 
 ## Dataset
-The following three primary reasons led us to choose [pytse-client](https://github.com/Glyphack/pytse-client) library as our ML dataset of the Iranian stock market:
-1. Data is updated daily and non-stop.
-2. Contains valuable data about individual sales and purchases.
-3. Has a history of buying stocks over long periods.
+We utilized stock price data as well as the TEDPIX index from the Tehran Stock Exchange. After careful consideration, we determined that the [pytse-client](https://github.com/Glyphack/pytse-client) library was the most suitable source of financial features for the following reasons:
+1. The pytse-client library is an open-source and efficient library that provides us with fast access to financial data.
+2. The library's data is continuously updated on a daily basis, which ensures that we have access to the most recent information.
+3. The pytse-client library contains valuable data about individual sales and purchases, which is important for identifying market trends and making informed investment decisions.
+4. The library also provides historical data, enabling us to analyze buying patterns and stock performance over extended periods of time.
 
 
 ## ToDo
-- [x] ~~Deployment With Docker Containers.~~
+- [x] ~~Deployment with docker containers.~~
 - [ ] Using a cron job to run the model daily.
 - [ ] Improved visualization of indicators and model performance, and rewritten Jupyter Notebook.
 - [ ] Using more indicators, to gain more insight into daily price data.
